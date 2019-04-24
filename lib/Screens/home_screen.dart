@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loja_virtual/Tabs/home_tab.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -12,13 +13,7 @@ final _pageController = PageController();
 
       ),
       children: <Widget>[
-        Container(
-          color: Colors.yellow,
-        ),Container(
-          color: Colors.red,
-        ),Container(
-          color: Colors.green,
-        )
+        HomeTab()
       ],
     );
   }
