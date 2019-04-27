@@ -94,3 +94,4 @@ unlinked_spec.ds
 ios/Runner/Info.plist
 android/app/google-services.json
 ios/Runner/Info.plist
+ios/Runner/GoogleService-Info.plist
