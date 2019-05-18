@@ -10,7 +10,7 @@ class CategoryScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(snapshot.data["tilte"]),
+          title: Text(snapshot.data["title"]),
           centerTitle: true,
           bottom: TabBar(
             indicatorColor: Colors.white,
