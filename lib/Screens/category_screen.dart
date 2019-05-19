@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_loja_virtual/models/product.dart';
+import 'package:flutter_loja_virtual/tiles/product_tile.dart';
 
 class CategoryScreen extends StatelessWidget {
   final DocumentSnapshot snapshot;
@@ -28,12 +30,23 @@ class CategoryScreen extends StatelessWidget {
                 .getDocuments(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
+                
                 return Center(child: CircularProgressIndicator());
               } else {
                 return TabBarView(children: <Widget>[
                   GridView.builder(
-                    gridDelegate: null,
-                    itemBuilder: null,
+                    padding: EdgeInsets.all(4),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 4,
+                        mainAxisSpacing: 4,
+                        childAspectRatio: 0.65),
+                    itemCount: snapshot.data.documents.length,
+                    itemBuilder: (context, index) {
+                      var productData =
+                          Product.fromDocument(snapshot.data.documents[index]);
+                      return ProductTile("grid", productData);
+                    },
                   ),
                   Container(color: Colors.green),
                 ]);
