@@ -20,14 +20,21 @@ class CategoryScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: <Widget>[
-            Container(color: Colors.red),
-            Container(color: Colors.green),
-          ],
-        ),
+        body: FutureBuilder<QuerySnapshot>(
+            future: Firestore.instance.collection("products").document(snapshot.documentID).collection("items").getDocuments(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                return TabBarView(children: <Widget>[
+                  Container(color: Colors.red),
+                  Container(color: Colors.green),
+                ]);
+              }
+            }),
       ),
     );
   }
+
   CategoryScreen(this.snapshot);
 }
