@@ -30,7 +30,6 @@ class CategoryScreen extends StatelessWidget {
                 .getDocuments(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                
                 return Center(child: CircularProgressIndicator());
               } else {
                 return TabBarView(children: <Widget>[
@@ -48,7 +47,15 @@ class CategoryScreen extends StatelessWidget {
                       return ProductTile("grid", productData);
                     },
                   ),
-                  Container(color: Colors.green),
+                  ListView.builder(
+                    padding: EdgeInsets.all(4),
+                    itemCount: snapshot.data.documents.length,
+                    itemBuilder: (context, index) {
+                      var productData =
+                          Product.fromDocument(snapshot.data.documents[index]);
+                      return ProductTile("list", productData);
+                    },
+                  ),
                 ]);
               }
             }),
