@@ -16,7 +16,6 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final Color primaryColor = Theme.of(context).primaryColor;
 
     return Scaffold(
@@ -29,14 +28,34 @@ class _ProductScreenState extends State<ProductScreen> {
           AspectRatio(
             aspectRatio: .9,
             child: Carousel(
-              images:  this.product.images.map((url) => NetworkImage(url)).toList(),
+              images:
+                  this.product.images.map((url) => NetworkImage(url)).toList(),
               dotSize: 4,
               dotSpacing: 15,
               dotBgColor: Colors.transparent,
               dotColor: primaryColor,
               autoplay: false,
             ),
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(product.title,
+                    maxLines: 3,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    )),
+                Text("R\$ ${product.price.toStringAsFixed(2)}",
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor))
+              ],
+            ),
+          ),
         ],
       ),
     );
