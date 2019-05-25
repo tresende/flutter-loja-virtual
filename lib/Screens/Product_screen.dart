@@ -1,3 +1,4 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_loja_virtual/models/product.dart';
 
@@ -15,6 +16,29 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+
+    final Color primaryColor = Theme.of(context).primaryColor;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(product.title),
+        centerTitle: true,
+      ),
+      body: ListView(
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: .9,
+            child: Carousel(
+              images:  this.product.images.map((url) => NetworkImage(url)).toList(),
+              dotSize: 4,
+              dotSpacing: 15,
+              dotBgColor: Colors.transparent,
+              dotColor: primaryColor,
+              autoplay: false,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
