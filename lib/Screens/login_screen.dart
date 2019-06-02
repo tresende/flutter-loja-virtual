@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -35,6 +36,15 @@ class LoginScreen extends StatelessWidget {
                   'Esqueci Minha Senha',
                   textAlign: TextAlign.right,
                 ),
+              )),
+          SizedBox(height: 16),
+          SizedBox(
+              height: 46,
+              child: RaisedButton(
+                textColor: Colors.white,
+                color: Theme.of(context).primaryColor,
+                child: Text('Entrar', style: TextStyle(fontSize: 18)),
+                onPressed: () {},
               ))
         ]),
       ),
