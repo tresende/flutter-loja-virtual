@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,15 +19,22 @@ class LoginScreen extends StatelessWidget {
         ],
       ),
       body: Form(
+        key: _formKey,
         child: ListView(padding: EdgeInsets.all(16), children: <Widget>[
           TextFormField(
             decoration: InputDecoration(hintText: "E-mail"),
             keyboardType: TextInputType.emailAddress,
+            validator: (text) {
+              if (text.isEmpty || !text.contains('@')) return 'Email inválido';
+            },
           ),
           SizedBox(height: 16),
           TextFormField(
             decoration: InputDecoration(hintText: "Senha"),
             obscureText: true,
+            validator: (text) {
+              if (text.isEmpty || text.length < 6) return 'Senha inválida';
+            },
           ),
           Align(
               alignment: Alignment.centerRight,
@@ -44,7 +53,11 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 color: Theme.of(context).primaryColor,
                 child: Text('Entrar', style: TextStyle(fontSize: 18)),
-                onPressed: () {},
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    
+                  }
+                },
               ))
         ]),
       ),
