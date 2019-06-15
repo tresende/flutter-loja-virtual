@@ -25,6 +25,9 @@ class LoginScreen extends StatelessWidget {
         ],
       ),
       body: ScopedModelDescendant<UserModel>(builder: (context, child, model) {
+        if (model.isLoading) {
+          return Center(child: CircularProgressIndicator());
+        }
         return Form(
           key: _formKey,
           child: ListView(padding: EdgeInsets.all(16), children: <Widget>[
@@ -63,6 +66,7 @@ class LoginScreen extends StatelessWidget {
                   child: Text('Entrar', style: TextStyle(fontSize: 18)),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {}
+                    model.signIn();
                   },
                 ))
           ]),

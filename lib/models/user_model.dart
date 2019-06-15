@@ -5,7 +5,13 @@ class UserModel extends Model {
 
   void signUp() {}
 
-  void signIn() {}
+  Future signIn() async {
+    isLoading = true;
+    notifyListeners();
+    await Future.delayed(Duration(seconds: 3));
+    isLoading = false;
+    notifyListeners();
+  }
 
-  void recoverPass() {} 
+  void recoverPass() {}
 }
