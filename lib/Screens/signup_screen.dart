@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_loja_virtual/Screens/home_screen.dart';
 import 'package:flutter_loja_virtual/models/user_model.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -82,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             "email": _emailController.text,
                             "address": _addressController.text,
                           };
-                          model.signUp(userData, _nameController.text,
+                          model.signUp(userData, _passController.text,
                               _onSuccess, _onFail);
                         }
                       },
@@ -100,7 +101,7 @@ class _SignupScreenState extends State<SignupScreen> {
           backgroundColor: Theme.of(context).primaryColor,
           duration: delay,
         ));
-    Future.delayed(delay);
+    Navigator.of(context).pop();
   }
 
   void _onFail() {
@@ -112,4 +113,6 @@ class _SignupScreenState extends State<SignupScreen> {
         ));
     Future.delayed(delay);
   }
+
+  Future<Null> LoadCurrentUser() {}
 }
