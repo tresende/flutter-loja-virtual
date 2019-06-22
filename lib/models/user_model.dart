@@ -43,6 +43,10 @@ class UserModel extends Model {
     notifyListeners();
   }
 
+  bool isLoggedIn() {
+    return this.firebaseUser != null;
+  }
+
   Future<Null> _saveUserData(Map<String, dynamic> userData) async {
     this.userData = userData;
     await Firestore.instance
@@ -52,4 +56,10 @@ class UserModel extends Model {
   }
 
   void recoverPass() {}
+
+  Future signOut() async {
+    await this._auth.signOut();
+    this.firebaseUser = null;
+    notifyListeners();
+  }
 }
