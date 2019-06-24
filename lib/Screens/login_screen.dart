@@ -25,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
           duration: delay,
         ));
     Navigator.of(context).pop();
-
   }
 
   void _onFail() {
@@ -85,7 +84,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.centerRight,
                 child: FlatButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
+                  onPressed: () {
+                    if (this._emailController.text.isEmpty) {
+                      this._scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Insira seu email!"),
+                            backgroundColor: Theme.of(context).primaryColor,
+                          ));
+                    } else {
+                      model.recoverPass(this._emailController.text);
+                      this._scaffoldKey.currentState.showSnackBar(SnackBar(
+                            content: Text("Confira seu email!"),
+                            backgroundColor: Theme.of(context).primaryColor,
+                          ));
+                    }
+                  },
                   child: Text(
                     'Esqueci Minha Senha',
                     textAlign: TextAlign.right,

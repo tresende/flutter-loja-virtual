@@ -77,7 +77,9 @@ class UserModel extends Model {
         .setData(userData);
   }
 
-  void recoverPass() {}
+  void recoverPass(String email) {
+    _auth.sendPasswordResetEmail(email: email);
+  }
 
   Future signOut() async {
     await this._auth.signOut();
