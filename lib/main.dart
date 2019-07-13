@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModel<UserModel>(
         model: new UserModel(),
-        child: ScopedModelDescendant(builder: (context, child, model) {
+        child:
+            ScopedModelDescendant<UserModel>(builder: (context, child, model) {
           return ScopedModel<CartModel>(
             model: new CartModel(model),
             child: MaterialApp(

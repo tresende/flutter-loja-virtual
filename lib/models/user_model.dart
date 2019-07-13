@@ -19,8 +19,6 @@ class UserModel extends Model {
   void signUp(Map<String, dynamic> userData, String pass,
       VoidCallback onSuccess, VoidCallback onFail) {
     startLoading();
-    print(userData["email"]);
-    print(pass);
     _auth
         .createUserWithEmailAndPassword(
             email: userData["email"], password: pass)
@@ -79,6 +77,10 @@ class UserModel extends Model {
 
   void recoverPass(String email) {
     _auth.sendPasswordResetEmail(email: email);
+  }
+
+  static UserModel of(BuildContext context) {
+    return ScopedModel.of<UserModel>(context);
   }
 
   Future signOut() async {
