@@ -6,6 +6,8 @@ import 'package:flutter_loja_virtual/models/cart_product.dart';
 import 'package:flutter_loja_virtual/models/product.dart';
 import 'package:flutter_loja_virtual/models/user_model.dart';
 
+import 'cart_screen.dart';
+
 class ProductScreen extends StatefulWidget {
   final Product product;
   ProductScreen(this.product);
@@ -113,6 +115,8 @@ class _ProductScreenState extends State<ProductScreen> {
                                 cartProduct.category = product.category;
                                 cartProduct.productData = product;
                                 CartModel.of(context).addCartItem(cartProduct);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => CartScreen()));
                               } else {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => LoginScreen()));
