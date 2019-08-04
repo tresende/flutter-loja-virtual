@@ -35,6 +35,7 @@ class CartScreen extends StatelessWidget {
               padding: EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.remove_shopping_cart,
                       size: 80, color: Theme.of(context).primaryColor),
