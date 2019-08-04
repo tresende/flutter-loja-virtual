@@ -60,6 +60,13 @@ class CartScreen extends StatelessWidget {
                 ],
               ),
             );
+          } else if (model.products == null || model.products.length == 0) {
+            return Center(
+                child: Text(
+              "Nenhum produto no carrinho",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ));
           }
         },
       ),
