@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loja_virtual/models/cart.dart';
 import 'package:flutter_loja_virtual/models/user_model.dart';
+import 'package:flutter_loja_virtual/screens/login_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CartScreen extends StatelessWidget {
@@ -44,7 +45,10 @@ class CartScreen extends StatelessWidget {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   SizedBox(height: 16),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginScreen()));
+                    },
                     textColor: Colors.white,
                     color: Theme.of(context).primaryColor,
                     child: Text(
