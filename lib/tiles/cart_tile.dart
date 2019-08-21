@@ -8,18 +8,32 @@ class CartTile extends StatelessWidget {
 
   CartTile(this.cartProduct);
 
+  Widget _buildContent() {}
+
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-      child: cartProduct.productData == null ? FutureBuilder<DocumentSnapshot>(
-        future: Firestore.instance.collection("products").document(cartProduct.category).collection("items").document(cartProduct.pid).get(),
-        builder: (context, snapshot){
-          if(snapshot.hasData){
-            cartProduct.productData = Product.fromDocument(snapshot.data);
-          }
-        },
-      );
-    );
+        margin: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+        child: cartProduct.productData == null
+            ? FutureBuilder<DocumentSnapshot>(
+                future: Firestore.instance
+                    .collection("products")
+                    .document(cartProduct.category)
+                    .collection("items")
+                    .document(cartProduct.pid)
+                    .get(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    cartProduct.productData =
+                        Product.fromDocument(snapshot.data);
+                    return _buildContent();
+                  } else {
+                    return Container(
+                        height: 70,
+                        alignment: Alignment.center,
+                        child: CircularProgressIndicator());
+                  }
+                })
+            : _buildContent());
   }
 }
