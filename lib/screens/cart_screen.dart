@@ -69,7 +69,7 @@ class CartScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ));
           } else {
-            ListView(
+            return ListView(
               children: <Widget>[
                 Column(
                   children: model.products.map((product) {

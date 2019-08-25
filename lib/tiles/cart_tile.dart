@@ -12,7 +12,10 @@ class CartTile extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget _buildContent() {
       return Row(
+<<<<<<< HEAD
         mainAxisAlignment: MainAxisAlignment.center,
+=======
+>>>>>>> 80f33e4baa4cc6ff69d8a4b41161704a058f361b
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(8),
@@ -24,8 +27,11 @@ class CartTile extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(8),
               child: Column(
+<<<<<<< HEAD
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+=======
+>>>>>>> 80f33e4baa4cc6ff69d8a4b41161704a058f361b
                 children: <Widget>[
                   Text(
                     cartProduct.productData.title,
@@ -43,6 +49,7 @@ class CartTile extends StatelessWidget {
                         color: Theme.of(context).primaryColor),
                   ),
                   Row(
+<<<<<<< HEAD
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       IconButton(
@@ -53,12 +60,25 @@ class CartTile extends StatelessWidget {
                       Text(cartProduct.quantity.toString()),
                       IconButton(
                         color: Theme.of(context).primaryColor,
+=======
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.remove),
+                        onPressed: () {},
+                      ),
+                      Text(cartProduct.quantity.toString()),
+                      IconButton(
+>>>>>>> 80f33e4baa4cc6ff69d8a4b41161704a058f361b
                         icon: Icon(Icons.add),
                         onPressed: () {},
                       ),
                       FlatButton(
                         child: Text("Remover"),
+<<<<<<< HEAD
                         textColor: Colors.grey,
+=======
+                        color: Colors.grey,
+>>>>>>> 80f33e4baa4cc6ff69d8a4b41161704a058f361b
                         onPressed: () {},
                       ),
                     ],
